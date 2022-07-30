@@ -1,0 +1,162 @@
+﻿@model FYP_App.Models.Complaint_DB
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/UserLayOut.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgb(70, 68, 68);
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        input[type=email], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgb(70, 68, 68);
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+
+        input[type=submit] {
+            background-color: rgb(37, 116, 161);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    </style>
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="container">
+            <h2>
+                ℂ𝕠𝕞𝕡𝕝𝕒𝕚𝕟𝕥 #    @Html.DisplayFor(model => model.Complaint_ID)
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                𝕀𝕤𝕤𝕦𝕖 𝕕𝕒𝕥𝕖 :  @Html.DisplayFor(model => model.Date)
+            </h2>
+            <hr />
+            <form>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="fname">User Name</label>
+                    </div>
+                    <div class="col-75">
+
+                        @Html.TextBoxFor(model => model.User_Name, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="lname">User Email</label>
+                    </div>
+                    <div class="col-75">
+                        @Html.TextBoxFor(model => model.User_Email, new { @class = "form-control", @readonly = "readonly" })
+
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="fname">Complaint Status</label>
+                    </div>
+                    <div class="col-75">
+
+                        @Html.TextBoxFor(model => model.Status, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="email">Complaint Subject </label>
+                    </div>
+                    <div class="col-75">
+                        @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="feed_back">Complaint Description</label>
+                    </div>
+                    <div class="col-75">
+
+                        @Html.TextAreaFor(model => model.Description, new { @style = "height:200px", @readonly = "readonly" })
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="row">
+                        <a href="@Url.Action("Index","Complaint")" class="btn btn-mini btn-info icon-edit bigger-07"><img src="https://img.icons8.com/flat_round/30/000000/back--v1.png" />Back to List </a>
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    }
+</body>
+
+</html>
+
